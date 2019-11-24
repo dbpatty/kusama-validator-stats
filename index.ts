@@ -48,4 +48,6 @@ let display_nominators = true;
 	console.log(`Staking Rate: ${totalBondingStake / totalKSM * 100} %`);
 	console.log(`Validators: ${currentValidators.length}`);
 	console.log(`Minimum stake: ${Math.min.apply(null, stakes)}`);
+
+	process.exit(0);
 })()
