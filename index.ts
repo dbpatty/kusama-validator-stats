@@ -1,10 +1,12 @@
 const{ ApiPromise, WsProvider } = require('@polkadot/api');
 const { isHex } = require('@polkadot/util');
 const DOT_DECIMAL_PLACES = 1000000000000;
-let display_nominators = true;
 
-(async () => {
-	const provider = new WsProvider('wss://kusama-rpc.polkadot.io/');
+let display_nominators = true;
+const provider = new WsProvider('wss://kusama-rpc.polkadot.io/');
+
+async function main(){
+	
 	const api = await ApiPromise.create({ provider });
 
 	const [ currentValidators, totalIssuance ] = await Promise.all([
@@ -50,4 +52,6 @@ let display_nominators = true;
 	console.log(`Minimum stake: ${Math.min.apply(null, stakes)}`);
 
 	process.exit(0);
-})()
+}
+
+main()
